@@ -39,9 +39,9 @@ jobs:
         poetry run flake8
     - name: Coverage report
       run: |
-        poetry run coverage run manage.py test
+        poetry run coverage run -m core.manage test
         poetry run coverage report
     - name: Django testing
       run: |
-        poetry run python3 manage.py test
+        poetry run python3 -m core.manage test
 
