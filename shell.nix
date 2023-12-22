@@ -9,6 +9,8 @@ in
 				coverage
 				flake8
 				pillow
+
+				just
 			]))
 		];
 	shellHook = ''
