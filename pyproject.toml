@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "goon"
+version = "0.1.0"
+description = ""
+authors = ["DaniFdz <danifernandezzzzzz@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0"
+pillow = "^10.1.0"
+coverage = "^7.3.4"
+flake8 = "^6.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
