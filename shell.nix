@@ -4,8 +4,11 @@ in
 	pkgs.mkShell {
 		packages = [
 			(pkgs.python311.withPackages (ps: with ps; [
+				pip
 				django
+				coverage
 				flake8
+				pillow
 			]))
 		];
 	shellHook = ''
