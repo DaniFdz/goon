@@ -1,4 +1,4 @@
-FROM python:3.11.6-buster
+FROM python:3.11.7
 
 # Set the working directory in the container
 WORKDIR /opt/project
@@ -12,7 +12,7 @@ ENV CORE_SETTING_IN_DOCKER true
 # Install dependencies
 RUN set -xe \
 		&& apt-get update \
-		&& apt-get install -y --no-install-recommends build-essential just \
+		&& apt-get install -y --no-install-recommends build-essential \
 		&& pip install --no-cache-dir virtualenvwrapper poetry==1.7.0 \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*

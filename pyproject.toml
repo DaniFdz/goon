@@ -13,6 +13,9 @@ pillow = "^10.1.0"
 coverage = "^7.3.4"
 django-split-settings = "^1.2.0"
 pyyaml = "^6.0.1"
+pydantic = "^2.5.3"
+pynacl = "^1.5.0"
+daphne = "^4.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
