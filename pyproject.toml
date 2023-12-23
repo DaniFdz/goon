@@ -11,8 +11,23 @@ python = "^3.11"
 django = "^5.0"
 pillow = "^10.1.0"
 coverage = "^7.3.4"
-flake8 = "^6.1.0"
+django-split-settings = "^1.2.0"
+pyyaml = "^6.0.1"
 
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.6.0"
+
+[tool.isort]
+multi_line_output = 5
+line_length = 119
+
+[tool.yapf]
+based_on_style = "google"
+align_closing_bracket_with_visual_indent = true
+coalesce_brackets = true
+column_limit = 119
+dedent_closing_brackets = true
 
 [build-system]
 requires = ["poetry-core"]

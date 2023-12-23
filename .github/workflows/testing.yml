@@ -33,10 +33,12 @@ jobs:
         path: ./.venv
         key: venv-${{ hashFiles('poetry.lock') }}
     - name: Install the project dependencies
-      run: poetry install
-    - name: Lint with Flake8
       run: |
-        poetry run flake8
+        poetry install
+        poetry run pre-commit install
+    - name: Linting
+      run: |
+        poetry run pre-commit run --all-files
     - name: Coverage report
       run: |
         poetry run coverage run -m core.manage test
@@ -44,4 +46,3 @@ jobs:
     - name: Django testing
       run: |
         poetry run python3 -m core.manage test
-
