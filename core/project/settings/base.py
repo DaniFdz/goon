@@ -1,3 +1,5 @@
+from core.project.settings import BASE_DIR
+
 DEBUG = False
 SECRET_KEY = "django-insecure-3)gqd#y5inj052qqcsdt%_*$+ol-xc1onl4^071v=2=_lr587)"
 
@@ -10,6 +12,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core.home',
+    'core.shop',
     'core.portfolio',
 ]
 
@@ -28,7 +32,7 @@ ROOT_URLCONF = 'core.project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'core' / 'templates', BASE_DIR / 'core' / 'static'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

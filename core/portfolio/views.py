@@ -1,7 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 
-def index(request):
-    context = {
-        "title": "Portfolio"
-    }
-    return render(request, 'home.html', context)
+
+def portfolio(request):
+    return render(request, "pages/portfolio.html", {})
