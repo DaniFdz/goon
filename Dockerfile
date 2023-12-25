@@ -12,7 +12,7 @@ ENV CORE_SETTING_IN_DOCKER true
 # Install dependencies
 RUN set -xe \
 		&& apt-get update \
-		&& apt-get install -y --no-install-recommends build-essential \
+		&& apt-get install -y --no-install-recommends build-essential python3-dev default-libmysqlclient-dev\
 		&& pip install --no-cache-dir virtualenvwrapper poetry==1.7.0 \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*

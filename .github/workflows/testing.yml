@@ -15,6 +15,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      db:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: core
+          MYSQL_USER: dev
+          POSTGRES_PASSWORD: dev_pass
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python3.11
@@ -39,5 +47,9 @@ jobs:
       run: just lint
     - name: Coverage report
       run: just coverage
+      env:
+        CORE_SETTING_DATABASES: '{"default":{"HOST":"db"}}'
     - name: Django testing
       run: just test
+      env:
+        CORE_SETTING_DATABASES: '{"default":{"HOST":"db"}}'

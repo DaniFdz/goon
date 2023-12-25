@@ -28,7 +28,7 @@ services:
       - '8000:8000'
     environment:
       CORE_SETTINGS_LOCAL_SETTINGS_PATH: 'local/settings.prod.py'
-      CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db"}}'
+      CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db", "USER":"${MYSQL_USER}", "PASSWORD":"${MYSQL_PASSWORD}"}}'
 
 volumes:
   db:

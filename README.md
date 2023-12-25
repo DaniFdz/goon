@@ -54,8 +54,8 @@ just run
 # Update the package index and upgrade packages
 sudo apt update -y && sudo apt upgrade -y
 
-# Install Docker, git, nginx, and cetbot
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common git nginx certbot python3-certbot-nginx
+# Install Docker, git, nginx, mysql drivers and cetbot
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common git nginx certbot python3-certbot-nginx build-essential python3-dev default-libmysqlclient-dev
 
 # Download the Docker GPG key (used to verify the authenticity and integrity of Docker packages during installation)
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -114,6 +114,13 @@ ssh ubuntu@IP_ADDRESS
 test -f .env || touch .env
 mkdir -p local
 sudo touch ./local/settings.prod.py
+```
+
+Open the `.env` file and type:
+```
+MYSQL_USER=<user>
+MYSQL_PASSWORD=<password>
+MYSQL_ROOT_PASSWORD=<password>
 ```
 
 Open the `./local/settings.prod.py` file and type:
