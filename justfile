@@ -36,3 +36,7 @@ coverage:
 	poetry run coverage run -m core.manage test
 	poetry run coverage html
 	poetry run coverage report
+
+# Run development server
+dev:
+	docker compose -f docker-compose.dev.yml up -d
