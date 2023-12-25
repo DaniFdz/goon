@@ -20,6 +20,7 @@ RUN set -xe \
 # Copy and install dependencies
 COPY [ "poetry.lock", "pyproject.toml", "./" ]
 RUN poetry install --no-root --no-dev
+RUN poetry run pip install django-admin-honeypot-updated-2021
 
 # Copy project files
 COPY [ "README.md", "justfile", "./" ]

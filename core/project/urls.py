@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),
     path(settings.ADMIN_URL, admin.site.urls),
     path("", include("core.home.urls")),
     path("", include("core.shop.urls")),
