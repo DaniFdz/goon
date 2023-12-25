@@ -117,7 +117,7 @@ LOGGING["formatters"]["colored"] = {  # type: ignore # noqa: F821
     "()": "colorlog.ColoredFormatter",
     "format": "%(log_color)s%(asctime)s %(levelname)s %(name)s %(bold_white)s%(message)s",
 }
-LOGGING["loggers"]["cooking_core"]["level"] = "PROD"  # type: ignore # noqa: F821
+LOGGING["loggers"]["core"]["level"] = "PROD"  # type: ignore # noqa: F821
 LOGGING["handlers"]["console"]["level"] = "PROD"  # type: ignore # noqa: F821
 LOGGING["handlers"]["console"]["formatter"] = "colored"  # type: ignore # noqa: F821
 ```
@@ -126,6 +126,11 @@ Then start the containers
 ```bash
 docker-compose build
 docker-compose up -d
+```
+
+Create superuser oneliner
+```bash
+docker exec -it $(docker ps | grep app | awk '{print $1}') poetry run python3 -m core.manage createsuperuser
 ```
 
 ## Setup NGINX
