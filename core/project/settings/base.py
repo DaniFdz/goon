@@ -3,6 +3,8 @@ from core.project.settings import BASE_DIR
 DEBUG = False
 SECRET_KEY = ')s@4(mmh*p^#*gg*b5$iywlfd85&^cz25kj$^4a5vcj1g(mjhy'
 
+ADMIN_URL = 'admin_debug/'
+
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -95,6 +97,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    BASE_DIR / 'core' / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

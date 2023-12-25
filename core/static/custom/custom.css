@@ -1,0 +1,33 @@
+nav{
+	width: 90vw;
+	margin: 0 auto;
+	height: min(10vh, 60px);
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+nav ul{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li{
+	margin: 0 10px;
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: #333;
+	font-size: 1.2rem;
+	transition: all 0.3s ease;
+}
+
+nav ul li a:hover{
+	color: #555;
+	transform: scale(1.1);
+}

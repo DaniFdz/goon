@@ -1,20 +1,4 @@
-## Common
-
-### Dependencies
-
-#### Install project dependencies
-
-[🤖 Just](https://github.com/casey/just)
-
-[🌐 Poetry](https://python-poetry.org/)
-
-#### Install Python dependencies
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-just install
-```
+# Goon
 
 ## Developers
 
@@ -127,6 +111,15 @@ Open the `./local/settings.prod.py` file and type:
 ```py
 DEBUG = False
 SECRET_KEY = '<Paste the key here>'
+CORE_SETTINGS_ADMIN_URL = '<New url for django admin panel>'
+
+LOGGING["formatters"]["colored"] = {  # type: ignore # noqa: F821
+    "()": "colorlog.ColoredFormatter",
+    "format": "%(log_color)s%(asctime)s %(levelname)s %(name)s %(bold_white)s%(message)s",
+}
+LOGGING["loggers"]["cooking_core"]["level"] = "PROD"  # type: ignore # noqa: F821
+LOGGING["handlers"]["console"]["level"] = "PROD"  # type: ignore # noqa: F821
+LOGGING["handlers"]["console"]["formatter"] = "colored"  # type: ignore # noqa: F821
 ```
 
 Then start the containers
@@ -141,7 +134,7 @@ ToDo
 ## Setup Certbot and request an SSL certificate
 ToDo
 
-## Updateing
+## Updating
 ```bash
 # stop the containers
 docker-compose down
