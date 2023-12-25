@@ -37,6 +37,10 @@ coverage:
 	poetry run coverage html
 	poetry run coverage report
 
-# Run development server
-dev:
+# Run database development server
+db_up:
 	docker compose -f docker-compose.dev.yml up -d
+
+# Stop database development server
+db_down:
+	docker compose -f docker-compose.dev.yml down
