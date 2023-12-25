@@ -2,6 +2,17 @@
 run:
 	poetry run python3 -m core.manage runserver
 
+# Setup poetry
+setup:
+	poetry config virtualenvs.create true --local
+	poetry config virtualenvs.in-project true --local
+
+# Install dependencies
+install: setup
+	poetry install --no-root
+	poetry run pre-commit install
+
+
 # Update configuration files
 update:
 	poetry update
