@@ -38,24 +38,26 @@ just run
 # Update the package index and upgrade packages
 sudo apt update -y && sudo apt upgrade -y
 
-# Install Docker, git, nginx, mysql drivers and cetbot
+# Install Docker, git, nginx, mysql drivers and certbot
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common git nginx certbot python3-certbot-nginx build-essential python3-dev default-libmysqlclient-dev
 
-# Download the Docker GPG key (used to verify the authenticity and integrity of Docker packages during installation)
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
-# ONE COMMAND | adds the Docker repository entry to the system's software sources list
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
 
 # Install Docker related tools
 sudo apt update -y
-sudo apt install -y docker-ce docker-ce-cli containerd.io
-
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-# Make it executable so we can run it directly from the command line
-sudo chmod +x /usr/local/bin/docker-compose
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add your user to the Docker group
 sudo usermod -aG docker $USER
@@ -124,8 +126,8 @@ LOGGING["handlers"]["console"]["formatter"] = "colored"  # type: ignore # noqa: 
 
 Then start the containers
 ```bash
-docker-compose build
-docker-compose up -d
+docker compose build
+docker compose up -d
 ```
 
 Create superuser oneliner
@@ -142,19 +144,19 @@ ToDo
 ## Updating
 ```bash
 # stop the containers
-docker-compose down
+docker compose down
 
 # fetch the updated source code
 git pull
 
 # rebuild and restart the containers
-docker-compose build
-docker-compose up -d --force-recreate
+docker compose build
+docker compose up -d --force-recreate
 ```
 
 ## Troubleshooting
 ```bash
 docker exec -it CONTAINER_ID /bin/bash
-docker-compose up -d --force-recreate
+docker compose up -d --force-recreate
 sudo systemctl restart nginx
 ```

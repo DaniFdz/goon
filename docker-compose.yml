@@ -19,7 +19,7 @@ services:
         --default-authentication-plugin=mysql_native_password
       ]
     volumes:
-       - ./db_dev:/var/lib/mysql
+       - ./db:/var/lib/mysql
 
   app:
     build: .
