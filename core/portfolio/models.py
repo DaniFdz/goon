@@ -11,7 +11,6 @@ class Categories(models.Model):
 
 
 class Clothes(models.Model):
-    name = models.CharField(max_length=50)
     image = models.ImageField(upload_to="images/")
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
 

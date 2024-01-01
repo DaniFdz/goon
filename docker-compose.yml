@@ -29,6 +29,9 @@ services:
     environment:
       CORE_SETTINGS_LOCAL_SETTINGS_PATH: 'local/settings.prod.py'
       CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db", "USER":"${MYSQL_USER}", "PASSWORD":"${MYSQL_PASSWORD}"}}'
+    volumes:
+      - ./media:/opt/project/media
 
 volumes:
-  db_dev:
+  db:
+  mdia:
