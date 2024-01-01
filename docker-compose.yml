@@ -19,7 +19,7 @@ services:
         --default-authentication-plugin=mysql_native_password
       ]
     volumes:
-       - ./db:/var/lib/mysql
+       - ./db_dev:/var/lib/mysql
 
   app:
     build: .
@@ -31,4 +31,4 @@ services:
       CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db", "USER":"${MYSQL_USER}", "PASSWORD":"${MYSQL_PASSWORD}"}}'
 
 volumes:
-  db:
+  db_dev:
