@@ -156,6 +156,10 @@ docker compose up -d --force-recreate
 
 ## Troubleshooting
 ```bash
+docker ps -a -q | xargs docker rm -f
+docker images -q | xargs docker rmi
+docker volume ls -q | xargs docker volume rm
+
 docker exec -it CONTAINER_ID /bin/bash
 docker compose up -d --force-recreate
 sudo systemctl restart nginx
