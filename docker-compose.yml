@@ -30,10 +30,5 @@ services:
       CORE_SETTINGS_LOCAL_SETTINGS_PATH: 'local/settings.prod.py'
       CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db", "USER":"${MYSQL_USER}", "PASSWORD":"${MYSQL_PASSWORD}"}}'
     volumes:
-      - ./media:/opt/project/media
-      - ./static:/opt/project/static
-
-volumes:
-  db:
-  media:
-  static:
+      - /var/www/media:/opt/project/media
+      - /var/www/static:/opt/project/static
