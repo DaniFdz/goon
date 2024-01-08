@@ -17,7 +17,6 @@ install: setup
 # Update configuration files
 update:
 	poetry update
-	poetry run pip3 freeze > requirements.txt
 
 # Apply migrations to the database
 migrations:
