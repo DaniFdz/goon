@@ -2,7 +2,6 @@ name: Django CD
 
 on:
   push:
-
     branches:
       - main
 
@@ -14,7 +13,7 @@ concurrency:
 jobs:
   quality-assurance:
     name: Quality Assurance
-    uses: ./.github/workflows/pr.yml
+    uses: ./.github/workflows/ci.yml
 
   deploy:
     name: Deploy
