@@ -118,6 +118,7 @@ Open the `./local/settings.prod.py` file and type:
 DEBUG = False
 SECRET_KEY = '<Paste the key here>'
 ADMIN_URL = '<New url for django admin panel>'
+CSRF_TRUSTED_ORIGINS = ['http://goon-web.es']
 ```
 
 Then start the containers
