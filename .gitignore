@@ -11,6 +11,7 @@ db/
 db_dev/
 static/
 media/
+*migrations/
 
 # Backup files #
 *.bak
