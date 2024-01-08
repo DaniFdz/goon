@@ -29,11 +29,6 @@ services:
     environment:
       CORE_SETTINGS_LOCAL_SETTINGS_PATH: 'local/settings.prod.py'
       CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db", "USER":"${MYSQL_USER}", "PASSWORD":"${MYSQL_PASSWORD}"}}'
-    command: >
-      sh -c "find /opt/project/media -type d -exec chmod 755 {} \;
-             find /opt/project/media -type f -exec chmod 644 {} \;
-             find /opt/project/static -type d -exec chmod 755 {} \;
-             find /opt/project/static -type f -exec chmod 644 {} \;"
     volumes:
       - /var/www/media:/opt/project/media
       - /var/www/static:/opt/project/static

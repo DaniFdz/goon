@@ -7,6 +7,11 @@ RUN_MANAGE_PY="poetry run python -m core.manage"
 echo "Collecting static files..."
 $RUN_MANAGE_PY collectstatic --no-input
 
+find /opt/project/media -type d -exec chmod 755 {} \;
+find /opt/project/media -type f -exec chmod 644 {} \;
+find /opt/project/static -type d -exec chmod 755 {} \;
+find /opt/project/static -type f -exec chmod 644 {} \;
+
 echo "Running migrations..."
 $RUN_MANAGE_PY migrate --no-input
 
