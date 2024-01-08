@@ -218,7 +218,6 @@ server {
 
     client_max_body_size 20M;
 
-
     location / {
         proxy_pass http://localhost:8000/;
 
@@ -237,8 +236,14 @@ server {
         proxy_set_header X-Forwarded-Host $http_host;
     }
 
-    location /static/ {
-        alias /root/goon/core/static/;
+    location /static {
+        autoindex off;
+        alias /var/www/static;
+    }
+
+    location /media {
+        autoindex off;
+        alias /var/www/media;
     }
 }
 ```
