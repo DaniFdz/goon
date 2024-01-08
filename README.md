@@ -117,7 +117,7 @@ Open the `./local/settings.prod.py` file and type:
 ```py
 DEBUG = False
 SECRET_KEY = '<Paste the key here>'
-CORE_SETTINGS_ADMIN_URL = '<New url for django admin panel>'
+ADMIN_URL = '<New url for django admin panel>'
 ```
 
 Then start the containers

@@ -5,6 +5,7 @@ services:
     image: mysql:8.0
     ports:
       - "3306:3306"
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: core
       MYSQL_USER: $MYSQL_USER
