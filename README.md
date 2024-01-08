@@ -107,6 +107,7 @@ sudo touch ./local/settings.prod.py
 
 Open the `.env` file and type:
 ```
+MYSQL_DATABASE=core
 MYSQL_USER=<user>
 MYSQL_PASSWORD=<password>
 MYSQL_ROOT_PASSWORD=<password>
@@ -117,14 +118,6 @@ Open the `./local/settings.prod.py` file and type:
 DEBUG = False
 SECRET_KEY = '<Paste the key here>'
 CORE_SETTINGS_ADMIN_URL = '<New url for django admin panel>'
-
-LOGGING["formatters"]["colored"] = {  # type: ignore # noqa: F821
-    "()": "colorlog.ColoredFormatter",
-    "format": "%(log_color)s%(asctime)s %(levelname)s %(name)s %(bold_white)s%(message)s",
-}
-LOGGING["loggers"]["core"]["level"] = "PROD"  # type: ignore # noqa: F821
-LOGGING["handlers"]["console"]["level"] = "PROD"  # type: ignore # noqa: F821
-LOGGING["handlers"]["console"]["formatter"] = "colored"  # type: ignore # noqa: F821
 ```
 
 Then start the containers
