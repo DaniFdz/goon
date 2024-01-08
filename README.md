@@ -132,10 +132,128 @@ docker exec -it $(docker ps | grep app | awk '{print $1}') poetry run python3 -m
 ```
 
 ## Setup NGINX
-ToDo
+
+Delete the content in the ngnix config file and open it
+```bash
+rm /etc/nginx/sitex-available/default
+vim /etc/nginx/sitex-available/default
+```
+
+Then paste this configuration:
+```nginx
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://localhost:8000;
+
+
+        proxy_http_version 1.1;
+
+        proxy_set_header Upgrade $http_upgrade;
+
+        proxy_set_header Connection "upgrade";
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+Save the file and exit the editor
+
+Test the nginx configuration
+```bash
+nginx -t
+```
+
+If tests is successful, restart NGINX to load in the new configuration
+```bash
+systemctl restart nginx
+```
+
+Allow NGINX through firewall
+```
+sudo ufw allow 'Nginx Full'
+```
 
 ## Setup Certbot and request an SSL certificate
-ToDo
+
+Follow the prompts to obtain an SSL certificate for your domain name. Certbot will automatically configure NGINX to use the SSL certificate.
+```bash
+certbot --nginx
+```
+Make sure the certificate auto-renewal is set up by running the following command
+```bash
+sudo certbot renew --dry-run
+```
+
+Create a new NGINX configuration file
+```bash
+sudo rm /etc/nginx/sites-available/default
+sudo nano /etc/nginx/sites-available/default
+```
+
+```nginx
+server {
+    listen 80 default_server;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl default_server;
+    ssl_certificate /etc/letsencrypt/live/goon-web.es/fullchain.pem;
+
+    ssl_certificate_key /etc/letsencrypt/live/goon-web.es/privkey.pem;
+
+    ssl_session_cache shared:le_nginx_SSL:10m;
+    ssl_session_timeout 1440m;
+
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+
+
+    client_max_body_size 20M;
+
+
+    location / {
+        proxy_pass http://localhost:8000/;
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_redirect   off;
+
+        proxy_buffering  off;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host;
+    }
+
+    location /static/ {
+        alias /root/goon/core/static/;
+    }
+}
+```
+
+Save the file and exit the editor
+
+Test the NGINX configuration
+```bash
+sudo nginx -t
+```
+
+If the test is successful, restart NGINX
+```bash
+sudo systemctl restart nginx
+```
 
 ## Updating
 ```bash
