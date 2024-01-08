@@ -10,7 +10,7 @@ services:
       MYSQL_USER: dev
       MYSQL_PASSWORD: dev_pass
       MYSQL_ROOT_PASSWORD: dev_pass
-
+    mem_limit: 128m
     command:
       [
         --character-set-server=utf8mb4,
