@@ -31,7 +31,9 @@ services:
       CORE_SETTINGS_DATABASES: '{"default": {"HOST":"db", "USER":"${MYSQL_USER}", "PASSWORD":"${MYSQL_PASSWORD}"}}'
     volumes:
       - ./media:/opt/project/media
+      - ./static:/opt/project/static
 
 volumes:
   db:
   media:
+  static:
