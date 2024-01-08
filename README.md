@@ -58,6 +58,9 @@ sudo apt update
 # Install Docker related tools
 sudo apt update -y
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+mkdir -p ~/.docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
 
 # Add your user to the Docker group
 sudo usermod -aG docker $USER
@@ -104,6 +107,7 @@ sudo touch ./local/settings.prod.py
 
 Open the `.env` file and type:
 ```
+MYSQL_DATABASE=core
 MYSQL_USER=<user>
 MYSQL_PASSWORD=<password>
 MYSQL_ROOT_PASSWORD=<password>
@@ -114,14 +118,6 @@ Open the `./local/settings.prod.py` file and type:
 DEBUG = False
 SECRET_KEY = '<Paste the key here>'
 CORE_SETTINGS_ADMIN_URL = '<New url for django admin panel>'
-
-LOGGING["formatters"]["colored"] = {  # type: ignore # noqa: F821
-    "()": "colorlog.ColoredFormatter",
-    "format": "%(log_color)s%(asctime)s %(levelname)s %(name)s %(bold_white)s%(message)s",
-}
-LOGGING["loggers"]["core"]["level"] = "PROD"  # type: ignore # noqa: F821
-LOGGING["handlers"]["console"]["level"] = "PROD"  # type: ignore # noqa: F821
-LOGGING["handlers"]["console"]["formatter"] = "colored"  # type: ignore # noqa: F821
 ```
 
 Then start the containers

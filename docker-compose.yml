@@ -10,7 +10,7 @@ services:
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-
+    mem_limit: 256m
     command:
       [
         --character-set-server=utf8mb4,
@@ -34,4 +34,4 @@ services:
 
 volumes:
   db:
-  mdia:
+  media:
