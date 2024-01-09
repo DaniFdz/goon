@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Categories(models.Model):
+class Categorie(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=1000)
 
@@ -9,11 +9,11 @@ class Categories(models.Model):
         return self.name
 
 
-class Clothes(models.Model):
+class Clothe(models.Model):
     image = models.ImageField(upload_to="images/")
     name = models.CharField(max_length=50, null=True)
     description = models.CharField(max_length=1000)
-    category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Categorie, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         if self.category:
