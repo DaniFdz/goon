@@ -9,8 +9,8 @@ db.sqlite3
 media
 db/
 db_dev/
-static/
-media/
+/static/
+/media/
 *migrations/
 
 # Backup files #
