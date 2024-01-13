@@ -1,5 +1,7 @@
-from django.core.exceptions import ValidationError
+import os
+
 from django.db import models
+from PIL import Image
 
 
 class Categorie(models.Model):
@@ -10,18 +12,27 @@ class Categorie(models.Model):
         return self.name
 
 
-def validate_image(fieldfile_obj):
-    filesize = fieldfile_obj.file.size
-    megabyte_limit = 50.0
-    if filesize > megabyte_limit * 1024 * 1024:
-        raise ValidationError("Max file size is %sMB" % str(megabyte_limit))
-
-
 class Clothe(models.Model):
-    image = models.ImageField(upload_to="images/", validators=[validate_image])
+    image = models.ImageField(upload_to="images/")
     name = models.CharField(max_length=50, null=True)
     description = models.CharField(max_length=1000)
     category = models.ForeignKey(Categorie, on_delete=models.CASCADE, null=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        # Set the maximum size in bytes (5MB)
+        max_size_bytes = 1 * 1024 * 1024
+        # Open the uploaded image file
+        img = Image.open(self.image.path)
+
+        # Check if the image is larger than the max size
+        quality = 100
+        while os.path.getsize(self.image.path) > max_size_bytes and quality > 0:
+            # Reduce the quality
+            img.save(self.image.path, quality=quality)
+
+            quality -= 1
 
     def __str__(self):
         if self.category:
