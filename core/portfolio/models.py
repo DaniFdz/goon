@@ -1,7 +1,7 @@
 import os
+from uuid import uuid4
 
 from django.db import models
-from PIL import Image
 
 
 class Categorie(models.Model):
@@ -12,27 +12,17 @@ class Categorie(models.Model):
         return self.name
 
 
+def generate_filename(_, filename):
+    ext = filename.split(".")[-1]
+    filename = f"{uuid4()}.{ext}"
+    return os.path.join("images/", filename)
+
+
 class Clothe(models.Model):
-    image = models.ImageField(upload_to="images/")
+    image = models.ImageField(upload_to=generate_filename)
     name = models.CharField(max_length=50, null=True)
     description = models.CharField(max_length=1000)
     category = models.ForeignKey(Categorie, on_delete=models.CASCADE, null=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        # Set the maximum size in bytes (5MB)
-        max_size_bytes = 1 * 1024 * 1024
-        # Open the uploaded image file
-        img = Image.open(self.image.path)
-
-        # Check if the image is larger than the max size
-        quality = 100
-        while os.path.getsize(self.image.path) > max_size_bytes and quality > 0:
-            # Reduce the quality
-            img.save(self.image.path, quality=quality)
-
-            quality -= 1
 
     def __str__(self):
         if self.category:
