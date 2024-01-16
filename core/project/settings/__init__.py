@@ -1,7 +1,7 @@
 import os.path
 from pathlib import Path
 
-import pymysql
+import pymysql  # type: ignore
 from split_settings.tools import include, optional
 
 pymysql.install_as_MySQLdb()

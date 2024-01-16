@@ -906,6 +906,28 @@ dev = ["pep8 (>=1.6.2)", "pyenchant (>=1.6.6)", "pytest (>=2.6.4)", "pytest-cov 
 twisted = ["twisted (>=20.3.0)", "zope.interface (>=5.2.0)"]
 
 [[package]]
+name = "types-pymysql"
+version = "1.1.0.1"
+description = "Typing stubs for PyMySQL"
+optional = false
+python-versions = "*"
+files = [
+    {file = "types-PyMySQL-1.1.0.1.tar.gz", hash = "sha256:72bdaecb88de4a30bc3e1842e1d4522ceb3c4b2e883a6a2a7a7162775dd27b93"},
+    {file = "types_PyMySQL-1.1.0.1-py3-none-any.whl", hash = "sha256:9aec9ee0453314d477ef26e5832b4a992bc4cc3557358d62b0fe4af760a7728f"},
+]
+
+[[package]]
+name = "types-pyyaml"
+version = "6.0.12.12"
+description = "Typing stubs for PyYAML"
+optional = false
+python-versions = "*"
+files = [
+    {file = "types-PyYAML-6.0.12.12.tar.gz", hash = "sha256:334373d392fde0fdf95af5c3f1661885fa10c52167b14593eb856289e1855062"},
+    {file = "types_PyYAML-6.0.12.12-py3-none-any.whl", hash = "sha256:c05bc6c158facb0676674b7f11fe3960db4f389718e19e62bd2b84d6205cfd24"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.9.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -1003,4 +1025,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "42d40136a4a108583b394adb30ebe97c45a32b382877c32a7d0bf123a6a9abe0"
+content-hash = "a31ec7620a49ec6cfc3988174449043e00127145a89e9609511c459ed7f4fc17"
