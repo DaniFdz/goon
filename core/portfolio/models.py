@@ -13,6 +13,8 @@ class Categorie(models.Model):
 
 
 def generate_filename(_, filename):
+    if not filename:
+        raise ValueError("Filename cannot be empty")
     ext = filename.split(".")[-1]
     filename = f"{uuid4()}.{ext}"
     return os.path.join("images/", filename)

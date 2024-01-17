@@ -13,7 +13,17 @@ jobs:
         env:
           MYSQL_DATABASE: core
           MYSQL_USER: dev
-          POSTGRES_PASSWORD: dev_pass
+          MYSQL_ROOT_PASSWORD: dev_pass
+          MYSQL_PASSWORD: dev_pass
+        ports: ['3306:3306']
+        command:
+          [
+            --character-set-server=utf8mb4,
+            --collation-server=utf8mb4_unicode_ci,
+            --lower-case-table-names=1,
+            --default-authentication-plugin=mysql_native_password
+          ]
+
 
     steps:
     - uses: actions/checkout@v3
@@ -37,11 +47,7 @@ jobs:
       run: just install
     - name: Linting
       run: just lint
-    - name: Coverage report
+    - name: Migrations
+      run: just migrations
+    - name: Testing and coverage report
       run: just coverage
-      env:
-        CORE_SETTING_DATABASES: '{"default":{"HOST":"db"}}'
-    - name: Django testing
-      run: just test
-      env:
-        CORE_SETTING_DATABASES: '{"default":{"HOST":"db"}}'

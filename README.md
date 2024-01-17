@@ -27,8 +27,8 @@ just install
 
 ```bash
 mkdir -p local
-cp core/project/settings/templates/settings.dev.py ./local/settings.dev.py
-just dev
+cp ./core/project/settings/templates/* ./local/
+just db_up
 just migrations
 just run
 ```

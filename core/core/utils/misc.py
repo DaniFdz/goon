@@ -10,4 +10,4 @@ def yaml_loader(value):
     if isinstance(value, str):
         return yaml.load(f"dummy: {value}", Loader=yaml.SafeLoader)["dummy"]
 
-    return value
+    raise TypeError("YAML file path must be a string")

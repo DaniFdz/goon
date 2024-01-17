@@ -29,13 +29,15 @@ lint:
 
 # Run server tests
 test:
-	poetry run python3 -m core.manage test
+	poetry run pytest -v -rs -n 3 --show-capture=no
 
 # Check the coverage of the tests
 coverage:
-	poetry run coverage run -m core.manage test
-	poetry run coverage html
-	poetry run coverage report
+	poetry run pytest -v -rs -n 3 --show-capture=no --cov --cov-report=term --cov-fail-under=100
+
+# Check the coverage of the tests and export to html
+coverage_html:
+	poetry run pytest -v -rs -n 3 --show-capture=no --cov --cov-report=html:htmlcov --cov-report=term --cov-fail-under=100
 
 # Run database development server
 db_up:
