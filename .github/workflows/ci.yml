@@ -17,13 +17,6 @@ jobs:
           MYSQL_PASSWORD: dev_pass
         ports:
           - '3306:3306'
-        command: [
-            '--character-set-server=utf8mb4',
-            '--collation-server=utf8mb4_unicode_ci',
-            '--lower-case-table-names=1',
-            '--default-authentication-plugin=mysql_native_password'
-          ]
-
 
     steps:
     - uses: actions/checkout@v3
