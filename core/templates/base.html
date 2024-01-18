@@ -8,6 +8,12 @@
 		<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png"/>
 		{% include "head/css.html" %}
 </head>
+	<style>
+		@font-face {
+			font-family: 'art-nuvo';
+			src: url('{% static "fonts/art-nuvo.otf" %}');
+		}
+	</style>
 	<body>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 	{% include "components/navbar.html" %}
