@@ -82,15 +82,13 @@ nav ul li a:hover {
 #hero .goon_title > h1{
 	font-size: 18rem;
 	font-family: 'art-nuvo', 'Roboto', sans-serif;
-	color: #111;
-	-webkit-text-stroke: 2px #fff;
+	color: #fff;
 }
 
 #hero .goon_title > h2{
 	font-size: 5rem;
 	font-family: 'art-nuvo', 'Roboto', sans-serif;
-	color: #111;
-	-webkit-text-stroke: 2px #fff;
+	color: #fff;
 	transform: translateY(-50px);
 }
 
