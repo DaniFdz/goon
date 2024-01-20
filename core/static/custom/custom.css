@@ -2,17 +2,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  font-family: Montserrat, sans-serif;
 }
+
+html {
+  overflow-x: hidden;
+}
+
 nav {
-  width: 90vw;
-  margin: 0 auto;
+  width: 94vw;
+  margin: 0 3vw;
   height: min(10vh, 60px);
   display: flex;
   justify-content: flex-end;
   align-items: center;
-	position: absolute;
-	z-index: 1000;
+  position: absolute;
+  z-index: 1000;
 }
 
 nav ul {
@@ -33,7 +38,7 @@ nav ul li a {
   color: #333;
   font-size: 1.2rem;
   transition: all 0.3s ease;
-	color: #000;
+  color: #000;
 }
 
 nav ul li a:hover {
@@ -66,38 +71,87 @@ nav ul li a:hover {
   z-index: -999;
 }
 
-#hero .goon_title{
-	width: 100vw;
-	height: 100dvh;
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 0px;
+#hero .goon_title {
+  width: 100vw;
+  height: 100dvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
 }
 
-#hero .goon_title > h1{
-	font-size: 18rem;
-	font-family: 'art-nuvo', 'Roboto', sans-serif;
-	color: #fff;
+#hero .goon_title > h1 {
+  font-size: 18rem;
+  font-family: "art-nuvo", Montserrat, sans-serif;
+  color: #fff;
 }
 
-#hero .goon_title > h2{
-	font-size: 5rem;
-	font-family: 'art-nuvo', 'Roboto', sans-serif;
-	color: #fff;
-	transform: translateY(-50px);
+#hero .goon_title > h2 {
+  font-size: 5rem;
+  font-family: "art-nuvo", Montserrat, sans-serif;
+  color: #fff;
+  transform: translateY(-50px);
 }
 
 @media screen and (max-width: 768px) {
-	#hero .goon_title > h1{
-		font-size: 10rem;
-	}
-	#hero .goon_title > h2{
-		font-size: 3rem;
-		transform: translateY(-30px);
-	}
+  #hero .goon_title > h1 {
+    font-size: 10rem;
+  }
+  #hero .goon_title > h2 {
+    font-size: 3rem;
+    transform: translateY(-30px);
+  }
+}
+
+#portfolio {
+  width: 100vw;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+#portfolio > section {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#portfolio > section > h2 {
+  font-size: 6em;
+  color: #000;
+	font-family: Montserrat, sans-serif;
+}
+
+#portfolio > section > .section_articles {
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+#portfolio > section > .section_articles > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#portfolio > section > .section_articles > article > img {
+  margin: 10px auto;
+  height: 60vh;
+}
+
+#portfolio > section > .section_articles > article > h3 {
+	font-size: 1rem;
+	color: #000;
+	font-family: Montserrat, sans-serif;
 }

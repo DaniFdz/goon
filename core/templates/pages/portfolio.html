@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-		<h1>Portfolio</h1>
+		<div id="portfolio">
+			{% for category in categories %}
+			<section>
+				<h2>{{ category.category.name }}</h2>
+				<div class="section_articles">
+					{% for clothe in category.clothes %}
+					<article>
+						<img src={{ clothe.image.url }} alt="{{ clothe.name }}">
+						<h3>{{ clothe.name }}</h3>
+						<!-- <p>{{ clothe.description }}</p> -->
+					</article>
+					{% endfor %}
+				</div>
+			</section>
+			{% endfor %}
+		</div>
 {% endblock %}
