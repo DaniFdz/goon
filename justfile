@@ -1,5 +1,5 @@
 # Run the server
-run:
+run: db_up
 	poetry run python3 -m core.manage runserver
 
 # Setup poetry

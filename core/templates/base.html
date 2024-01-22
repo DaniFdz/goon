@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="title" content="Goon">
-	<meta property="description" content="¡Descubre Goon, la marca de moda de Laurana Corrales en Madrid! Explora nuestro portfolio para encontrar una colección versátil y única de prendas con estilo. Desde diseños artesanales hasta las últimas tendencias, nuestro portfolio refleja la pasión por la moda y la creatividad de Laurana. Sumérgete en la diversidad de estilos y encuentra la autenticidad en cada detalle. ¡Explora el portfolio de Goon hoy para descubrir moda que se adapta a tu vida!">
+	<meta name="title" content="Goon">
+	<meta name="description" content="¡Descubre Goon, la marca de moda de Laurana Corrales en Madrid! Explora nuestro portfolio para encontrar una colección versátil y única de prendas con estilo. Desde diseños artesanales hasta las últimas tendencias, nuestro portfolio refleja la pasión por la moda y la creatividad de Laurana. Sumérgete en la diversidad de estilos y encuentra la autenticidad en cada detalle. ¡Explora el portfolio de Goon hoy para descubrir moda que se adapta a tu vida!">
 	<title>Goon</title>
 	<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png"/>
 		{% include "head/css.html" %}
@@ -13,7 +13,10 @@
 	<style>
 		@font-face {
 			font-family: 'art-nuvo';
-			src: url('{% static "fonts/art-nuvo.otf" %}');
+			font-style: normal;
+			src: local('art-nuvo'),
+				url('{% static "fonts/art-nuvo.otf" %}');
+			font-display: swap;
 		}
 	</style>
 	<body>
