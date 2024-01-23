@@ -15,8 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin_honeypot',
+    'compressor',
     'core.home',
-    'core.shop',
     'core.portfolio',
 ]
 
@@ -100,6 +100,12 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     BASE_DIR / 'core' / 'static',
+]
+
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = BASE_DIR / 'core' / 'static'
+STATICFILES_FINDERS = [
+    'compressor.finders.CompressorFinder',
 ]
 
 # Default primary key field type

@@ -7,7 +7,6 @@ urlpatterns = [
     path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),
     path(settings.ADMIN_URL, admin.site.urls),
     path("", include("core.home.urls")),
-    path("", include("core.shop.urls")),
     path("", include("core.portfolio.urls")),
 ]
 

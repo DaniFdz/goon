@@ -13,6 +13,9 @@ db_dev/
 /media/
 *migrations/
 
+# Node
+node_modules/
+
 # Backup files #
 *.bak
 

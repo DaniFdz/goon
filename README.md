@@ -21,6 +21,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 ### Install dependencies
 ```bash
 just install
+npm i
 ```
 
 ### Run the application
@@ -32,6 +33,12 @@ just db_up
 just migrations
 just run
 ```
+
+In other pane run to build the styles
+```bash
+just build_styles
+```
+
 
 ### Install dependencies
 ```

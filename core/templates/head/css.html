@@ -1,3 +1,6 @@
 {% load static %}
+{% load compress %}
 
-<link rel="stylesheet" href="{% static 'custom/custom.css' %}">
+{% compress css %}
+<link rel="stylesheet" href="{% static 'src/output.css' %}">
+{% endcompress %}

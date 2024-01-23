@@ -1,7 +1,15 @@
-<nav>
-	<ul>
-		<li><a href="{% url "home" %}">Home</a></li>
-		<li><a href="{% url "portfolio" %}">Portfolio</a></li>
-		<li><a href="{% url "shop" %}">Shop</a></li>
+<nav class="w-[94vw] h-[60px] mx-auto my-0 flex justify-end items-center position absolute z-50">
+	<ul class="flex flex-row items-center justify-between">
+		<li class="mx-4 md:mx-6">
+			<a href="{% url 'home' %}"
+				class="text-decoration-none text-black text-xl hover:text-gray-700 hover:scale-110 transition"
+				aria-current="page">Home</a>
+		</li>
+		<li class="mx-4 md:mx-6">
+			<a href="{% url 'portfolio' %}"
+				class="text-decoration-none text-black text-xl hover:text-gray-700 hover:scale-110 transition"
+				aria-current="page">Portfolio</a>
+		</li>
+		<li>
 	</ul>
 </nav>
