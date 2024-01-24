@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-		<div id="portfolio">
-			{% for category in categories %}
-			<section>
-				<h2>{{ category.category.name }}</h2>
-				<div class="section_articles">
-					{% for clothe in category.clothes %}
-					<article>
-						<img src={{ clothe.image.url }} alt="{{ clothe.name }}">
-						<h3>{{ clothe.name }}</h3>
-						<!-- <p>{{ clothe.description }}</p> -->
-					</article>
-					{% endfor %}
-				</div>
-			</section>
+<div class="w-full overflow-y-auto snap-y snap-mandatory">
+	{% for category in categories %}
+	<section class="h-dvh [width:100vw] mx-auto snap-start flex flex-col justify-center items-center">
+		<h2 class="text-4xl text-black [font-family: Montserrat, sans-serif]">{{ category.category.name }}</h2>
+		<div class="flex flex-row items-center [width:90vw] overflow-x-auto gap-2.5">
+			{% for clothe in category.clothes %}
+			<article class="flex flex-col justify-center items-center gap-3 p-3">
+				<img class="[height:60dvh] max-w-max w-max rounded-lg" src={{ clothe.image.url }}
+					alt="{{ clothe.name }}">
+				<h3 class="text-lg [font-family: Montserrat, sans-serif]">{{ clothe.name }}</h3>
+				<!-- <p>{{ clothe.description }}</p> -->
+			</article>
 			{% endfor %}
 		</div>
+	</section>
+	{% endfor %}
+</div>
 {% endblock %}

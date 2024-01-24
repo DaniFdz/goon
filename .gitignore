@@ -15,6 +15,7 @@ db_dev/
 
 # Node
 node_modules/
+CACHE
 
 # Backup files #
 *.bak
