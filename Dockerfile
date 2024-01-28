@@ -23,13 +23,13 @@ COPY [ "poetry.toml", "poetry.lock", "pyproject.toml", "./" ]
 RUN poetry install --no-root --no-dev
 RUN poetry run pip install django-admin-honeypot-updated-2021
 
-# Run npx tailwindcss command
-COPY core/static/src/input.css core/static/src/input.css
-RUN npx tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css
-
 # Copy project files
 COPY core core
 COPY local local
+
+# Run npx tailwindcss command
+COPY core/static/src/input.css core/static/src/input.css
+RUN npx tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css
 
 # Expose Django development server port
 EXPOSE 8000
