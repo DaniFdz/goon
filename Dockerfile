@@ -13,6 +13,7 @@ ENV CORE_SETTING_IN_DOCKER true
 RUN set -xe \
 		&& apt-get update \
 		&& apt-get install -y --no-install-recommends build-essential python3-dev default-libmysqlclient-dev\
+		&& apt-get install -y nodejs npm \
 		&& pip install --no-cache-dir virtualenvwrapper poetry==1.7.0 \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/*
@@ -21,6 +22,10 @@ RUN set -xe \
 COPY [ "poetry.toml", "poetry.lock", "pyproject.toml", "./" ]
 RUN poetry install --no-root --no-dev
 RUN poetry run pip install django-admin-honeypot-updated-2021
+
+# Run npx tailwindcss command
+COPY core/static/src/input.css core/static/src/input.css
+RUN npx tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css
 
 # Copy project files
 COPY core core
