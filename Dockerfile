@@ -28,8 +28,9 @@ COPY core core
 COPY local local
 
 # Run npx tailwindcss command
-COPY core/static/src/input.css core/static/src/input.css
-RUN npx tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css
+COPY package*.json ./
+RUN npm install
+RUN npm run tailwind-build
 
 # Expose Django development server port
 EXPOSE 8000
