@@ -1,5 +1,15 @@
 {
-  "devDependencies": {
+  "name": "goon",
+  "version": "1.0.0",
+  "description": "## Developers",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "tailwind-watch": "tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css --watch",
+    "tailwind-build": "tailwindcss -i ./core/static/src/output.css -o ./core/static/src/output.css --minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
     "tailwindcss": "^3.4.1"
   }
 }

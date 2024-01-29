@@ -2,9 +2,13 @@
 run: db_up
 	poetry run python3 -m core.manage runserver
 
+# Watch for changes in the styles
+watch_styles:
+	npm run tailwind-watch
+
 # Build the styles
 build_styles:
-	watch -n 2 npx tailwindcss -i ./core/static/src/input.css -o ./core/static/src/output.css
+	npm run tailwind-build
 
 # Setup poetry
 setup:
